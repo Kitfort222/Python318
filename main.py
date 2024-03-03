@@ -1774,8 +1774,8 @@ locale.setlocale(locale.LC_ALL, "ru")
 # print(outer(5, 8, 2))
 # print(outer(1, 6, 8))
 
-print("Вносим изменения")
-
+# print("Вносим изменения")
+print("Данные переносятся на GitHub")
 
 
 
