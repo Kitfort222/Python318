@@ -2058,15 +2058,60 @@ lst = [2, 8, 12, -5, -10]
 
 # print(ord('a'))
 
-st = "Test string for me "
-arr = [ord(x) for x in st]
-print("ASCII коды:", arr)
-arr = [sum(arr) // len(arr)] + arr
-print("Среднее арифметическое:", arr)
-arr += [ord(x) for x in input("-> ")[:3] if ord(x) not in arr]
-print(arr)
-print(arr.count(arr[-1]) - 1)
-arr.sort(reverse=True)
-print(arr)
+# st = "Test string for me "
+# arr = [ord(x) for x in st]
+# print("ASCII коды:", arr)
+# arr = [sum(arr) // len(arr)] + arr
+# print("Среднее арифметическое:", arr)
+# arr += [ord(x) for x in input("-> ")[:3] if ord(x) not in arr]
+# print(arr)
+# print(arr.count(arr[-1]) - 1)
+# arr.sort(reverse=True)
+# print(arr)
 
 
+# print(chr(97))
+# print(chr(35))
+# print(chr(135))
+
+# a = 97
+# b = 122
+# if b > a:
+#     a, b = b, a
+#     for i in range(b, a + 1):
+#         print(chr(i), end=" ")
+# else:
+#     for i in range(a, b + 1):
+#         print(chr(i), end=" ")
+
+# print("apple" == "Apple")
+# print("apple" > "Apple")
+
+# from random import randint
+#
+# min_ascii = 33
+# max_ascii = 126
+# shortest = 6
+# longest = 16
+# def random_password():
+#     res = ""
+#     for i in range(randint(shortest, longest )):
+#         res += chr(randint(min_ascii, max_ascii ))
+#     return res
+#
+# print("Ваш случайный пароль: ", random_password())
+
+# Методы строк
+
+s = "hello, WORLD! I am learning Python."
+print(s)
+# a = s.capitalize()
+# print(a)
+# print(s.lower())
+# print(s.upper())
+# print()
+
+# print(s.count('l'))
+# print(s.lower().count('l'))
+
+print(s.count('h', 1))
