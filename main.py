@@ -2262,16 +2262,16 @@ import re
 # reg = "я"
 # print(re.findall(reg, s, re.IGNORECASE))
 
-# text = """
-# one # Комментарий
-# two
-# """
+text = """
+one # Комментарий
+two
+"""
 
-# print(re.findall(r"one.\w+", text))
-# print(re.findall(r"one.\w+", text, re.DOTALL))
-# print(re.findall(r"one$", text, re.VERBOSE))
-# print(re.findall("""
-# [a-z.-]+
-# @
-# [a-z.-]+
-# """, "test@mail.ru", re.VERBOSE))
+print(re.findall(r"one.\w+", text))
+print(re.findall(r"one.\w+", text, re.DOTALL))
+print(re.findall(r"one$", text, re.VERBOSE))
+print(re.findall("""
+[a-z.-_]+
+@
+[a-z.-_]+
+""", "test@mail.ru", re.VERBOSE))
