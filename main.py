@@ -2182,11 +2182,11 @@ import random
 
 # Регулярные выражения
 
-import re
-
-s = "Я ищу совпадения в 2024 году. И я их найду в 2 счё_та. 1398765. Hello. "
-reg = "я"
-print(re.findall(reg, s))
+# import re
+#
+# s = "Я ищу совпадения в 2024 году. И я их найду в 2 счё_та. 1398765. Hello. "
+# reg = "я"
+# print(re.findall(reg, s))
 # reg = r"[204]"
 # reg = r"[2-4]"
 # reg = r"[0-9]"
@@ -2262,16 +2262,124 @@ import re
 # reg = "я"
 # print(re.findall(reg, s, re.IGNORECASE))
 
-text = """
-one # Комментарий
-two
-"""
+# text = """
+# one # Комментарий
+# two
+# """
+#
+# print(re.findall(r"one.\w+", text))
+# print(re.findall(r"one.\w+", text, re.DOTALL))
+# print(re.findall(r"one$", text, re.VERBOSE))
+# print(re.findall("""
+# [a-z.-_]+
+# @
+# [a-z.-_]+
+# """, "test@mail.ru", re.VERBOSE))
 
-print(re.findall(r"one.\w+", text))
-print(re.findall(r"one.\w+", text, re.DOTALL))
-print(re.findall(r"one$", text, re.VERBOSE))
-print(re.findall("""
-[a-z.-_]+
-@
-[a-z.-_]+
-""", "test@mail.ru", re.VERBOSE))
+# text = """Python,
+# python,
+# PYTHON"""
+# reg = '(?mi)^python'
+# print(re.findall(reg, text))
+
+# text = "<body>Пример жадного соответствия регулярных выражений</body>"
+# print(re.findall("<.*?>", text))
+
+# s1 = "12 сентября 2024 года 4567897"
+# # reg1 = r"\d{2,4}?"
+# reg1 = r"\d{2}"
+# print(re.findall(reg1, s1))
+
+# s = "Петр и Виталий отлично учатся!"
+# reg = r"Ольга|Виталий"
+# print(re.findall(reg, s))
+
+# s = "int = 4, float = 4.0f, double = 8.0"
+# # reg = r"(?:int|float|double)\s*=\s*[.\w+]*"
+# reg = r"((?:int|float|double)\s*=\s*(?:[.\w+]*))"
+# print(re.findall(reg, s))
+
+# s = "5 + 7*2 - 4"
+# reg = r"\s*([+*-])\s*"
+# print(re.split(reg, s))
+
+# a = "31-08-1921"
+# pattern = r"(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19\d\d|20[0-9][0-9])"
+# print(re.findall(pattern, a))
+# print(re.search(pattern, a).group())
+# m = re.search(pattern,a)
+# print(m[0])
+# print(m[1])
+# print(m[2])
+# print(m[3])
+
+# s = "Самолет прилетает 10/23/2024. Будем рады вас видеть после 10/24/2024."
+# reg = r"(\d{2})/(\d{2})/(\d{4})"
+# print(re.sub(reg,r"\2.\1.\3", s))
+
+# s = "yandex.com and yandex.com.ru"
+# reg = r"(([a-z0-9-]{2,}\.)+[a-z]{2,4})"
+# print(re.sub(reg, r"http://\2", s))
+
+# def elevator(n):
+#     if n == 0:
+#         print("Вы в подвале")
+#         return
+#     print("=> ", n)
+#     elevator(n - 1)
+#     print(n, end=" ")
+#
+# n1 = int(input("На каком вы этаже: "))
+# elevator(n1)
+
+# def sum_list(lst):
+#    res = 0
+#    for i in lst:
+#        res += i
+#    return res
+#
+# print(sum_list([1, 3, 5, 7, 9]))
+#
+# def sum_list(lst):
+#     if len(lst) == 1:
+#         return lst[0]
+#     else:
+#         return lst[0] + sum_list(lst[1:])
+#
+# print(sum_list([1, 3, 5, 7, 9]))
+
+# def to_str(n, base):
+#     convert = "0123456789ABCDEF"
+#     if n < base:
+#         return convert[n]
+#     else:
+#         return to_str(n // base, base) + convert[n % base]
+#
+#
+# print(to_str(254, 16))
+
+# def count_items(item_list):
+#     count = 0
+#     for item in item_list:
+#         if isinstance(item, list):
+#             count += count_items(item)
+#         else:
+#             count += 1
+#     return count
+#
+# names = ['Adam', ['Bob', ['Chat', 'Cat'], 'Bard', 'Bert'], 'Alex', ['Bea', 'Bill'], "Ann"]
+# print(names)
+# print(len(names))
+# ...
+# print(count_items(names))
+
+def remove(text):
+    if not text:
+        return ""
+    if text[0] == "\n" or text[0] == " ":
+        return remove(text[1:])
+    else:
+        return text[0] + remove(text[1:])
+
+
+print(remove(" Hello\nWorld "))
