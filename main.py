@@ -2373,13 +2373,337 @@ import re
 # ...
 # print(count_items(names))
 
-def remove(text):
-    if not text:
-        return ""
-    if text[0] == "\n" or text[0] == " ":
-        return remove(text[1:])
-    else:
-        return text[0] + remove(text[1:])
+# def remove(text):
+#     if not text:
+#         return ""
+#     if text[0] == "\n" or text[0] == " ":
+#         return remove(text[1:])
+#     else:
+#         return text[0] + remove(text[1:])
+#
+#
+# print(remove(" Hello\nWorld "))
+
+# f = open("test.txt", "r")
+# print(f)
+# print(*f)
+# print(f.mode)
+# print(f.name)
+# print(f.encoding)
+# f.close()
+# print(f.closed)
+
+# f = open("test.txt", "r")
+# print(f.read(3))
+# print(f.read())
+# f.close()
+
+# f = open("test1.txt", "r")
+# # print(f.read(3))
+# print(f.readline())
+# print(f.readline(8))
+# print(f.readline())
+# print(f.readline())
+# f.close()
+
+# f = open("test1.txt", "r")
+# print(f.readlines(16))
+# print(f.readlines())
+# f.close()
+
+# f = open("test1.txt", "r")
+# for line in f:
+#     print(line)
+# f.close()
+
+# f = open("test1.txt", "r")
+# count = 0
+# for line in f:
+#     print(line)
+#     count += 1
+# f.close()
+# print("count =", count)
+
+# f = open("xyz.txt", "w")
+# f.write("Hello\nWorld!")
+# f.close()
+
+# f = open("xyz.txt", "a")
+# f.write("\nNew text")
+# f.close()
+
+# f = open("xyz.txt", "w")
+# f.writelines(["This is line 1\n", "This is line 2\n"])
+# f.close()
+
+# lst = [i for i in range(1, 20)]
+# print(lst)
+#
+# f = open("xyz.txt", "w")
+# f.write("\t".join(map(str, lst)))
+# f.close()
+#
+# f = open("xyz.txt", "r")
+# d = f.read()
+# st = list(map(int, d.split("\t")))
+# print(st)
+# print(type(st[0]))
+# f.close()
+
+# file = "text1.txt"
+# f = open(file, "w")
+# f.write("Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл;")
+# f.close()
+#
+# f = open(file, "r")
+# read_line = f.readlines()
+# print(read_line)
+# read_line[1] = "Hello world!\n"
+# print(read_line)
+# f.close()
+
+# f = open(file, "w")
+# f.writelines(read_line)
+# f.close()
+
+# file = "text1.txt"
+#
+# f = open(file, "w")
+# f.write("Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл;")
+# f.close()
+#
+# f = open(file, "r")
+# s = f.readlines()
+# f.close()
+# print(s)
+#
+# pos = int(input("pos = "))
+# if 0 <= pos < len(s):
+#     del s[pos]
+# else:
+#     print("Индекс введен неверно")
+#
+# f = open(file, "w")
+# f.writelines(s)
+# print(s)
+
+# f = open("test.txt")
+# print(f.read(3))
+# print(f.tell())
+# print(f.seek(1))
+# print(f.read())
+# print(f.tell())
+# f.close()
+
+# f = open("test.txt", "r+")
+# f.write("I am learning Python")
+# print(f.seek(3))
+# f.write("-new string-")
+# f.close()
+
+# f = open("test.txt", "r+")
+# f.write("I am learning Python")
+# # print(f.seek(3))
+# # f.write("-new string-")
+# print(f.tell())
+# print(f.read())
+# f.close()
+
+# with open('test.txt','w') as f:
+#     print(f.write('0123456789'))
+# print(f.closed)
+
+# with open('test.txt','r') as f:
+#      for line in f:
+#          print(line [:2])
+
+# def longest_words(file):
+#     with open(file, "r", encoding="utf8") as text:
+#         w = text.read().split()
+#         print(w)
+#         max_length = len(max(w, key=len))
+#         res = [word for word in w if len(word) == max_length]
+#         print(max_length)
+#         if len(res) == 1:
+#             return res[0]
+#     return res
+#
+#
+# print(longest_words('test.txt'))
+
+# one = "one.txt"
+# two = "two.txt"
+# three = "three.txt"
+
+# text = "Строка №1\nСтрока №2\nСтрока №3\nСтрока №4\nСтрока №5\nСтрока №6\nСтрока №7\nСтрока №8\nСтрока №9\nСтрока №10\n"
+# with open(one, 'w') as f:
+#     f.write(text)
+
+# with open(one, 'r') as fr, open(two, 'w') as fw:
+#     for line in fr:
+#         line = line.replace("Строка", "Линия -")
+#         fw.write(line)
+
+# one = "one.txt"
+# two = "two.txt"
+# three = "three.txt"
+
+# with open(one, "r") as f1:
+#     a = f1.readlines()
+# # print(a)
+#
+# with open(two, "r") as f2:
+#     b = f2.readlines()
+# # print(b)
+#
+# c = a + b
+# print(c)
+#
+# with open(three, 'w') as f3:
+#     f3.writelines(c)
+
+# one = "one.txt"
+# two = "two.txt"
+# three = "three.txt"
+#
+# with open(one, "r") as f1, open(two, "r") as f2, open(three, "w") as f3:
+#     a = f1.readlines()
+#     b = f2.readlines()
+#     c = []
+#     for i in range(len(a)):
+#         c.append(a[i])
+#         c.append(b[i])
+#     f3.writelines(c)
+
+# file = "text1.txt"
+# f = open(file)
+# line = 0
+# for i in f:
+#     line += 1
+#     word = 0
+#     flag = 0
+#     for j in i:
+#         if j != " " and flag == 0:
+#             word += 1
+#             flag = 1
+#         elif j == " ":
+#             flag = 0
+#     print(i, len(i), "символа", word, "слов")
+
+# print(line, "строки в документе")
+# f.write("Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл;\n")
+# f.close()
+
+# Модуль OS И OS.PATN
+
+import os
+# import os.path
+
+# print(os.path.split(r"C:\Users\Admin\Desktop\JS\318\nested1\nested2\text.txt"))
+
+# print(os.getcwd())  # путь к рабочей директории
+# print(os.listdir())  # список директорий и файлов
+# print(os.listdir(".."))  # список директорий и файлов
+#
+# os.mkdir("folder1") # создать папку
+# os.makedirs("nested1/nested2/nested3") # создаст папку с промежуточными папками
+# os.rmdir("folder1")
+
+# os.rename("xyz.txt", "zyx.txt")
+# os.renames("zyx.txt", "folder/zy.txt")
+
+# for root, dirs, files in os.walk("nested1"):
+#     print("Root:", root)
+#     print("\tSubdirs:", dirs)
+#     print("\tFiles:", files)
+
+# def remove_empty_dirs(root_tree):
+#     print(f"Удаление пустых директорий в ветви {root_tree}")
+#     print("-" * 50)
+#     for root, dirs, fikes in os.walk(root_tree):
+#         if not os.listdir(root):
+#             os.rmdir(root)
+#             print(f"Директория {root} удалена")
+#     print("-" * 50)
+#
+#
+# remove_empty_dirs("nested1")
+
+# print(os.path.split(r"C:\Users\Admin\Desktop\JS\318\nested1\nested2\text.txt"))
+# print(os.path.join(r"C:\Users", "Desktop", "318", "text.txt"))
+
+# dirs = [r'Work\F1', r"Work\F2\F21"]
+# for d in dirs:
+#     os.makedirs(d)
+
+# files = {
+#     'Work': ['w.txt'],
+#     r'Work\F1': ['f11.txt', 'f12.txt','f13.txt'],
+#     r'Work\F2\F21': ['f211.txt', 'f212.txt']
+# }
+# for d, f in files.items():
+#     for file in f:
+#         file_path = os.path.join(d, file)
+#         open(file_path, "w").close()
+#
+# files_with_text = [r'Work\w.txt', r'Work\F1\f12.txt', r'Work\F2\F21\f211.txt', r'Work\F2\F21\f212.txt']
+#
+# for file in files_with_text:
+#     with open(file, 'w') as f:
+#         f.write(f"Текст для файла {file}")
+#
+# def print_tree(root, topdown):
+#     print(f'Обход {root} {'сверху вниз' if topdown else 'снизу вверх'})
+#     for root, dirs, files1 in os.walk(root, topdown):
+#         print(root)
+#         print(dirs)
+#         print(files1)
+#     print("-" * 50)
+#
+#
+# print_tree('Work', False)
+# print_tree('Work', True)
+
+# print(os.path.exists(r"D:\Python318\318\nested1\nested2\nested3\text.txt"))  # возвращает True если путь существует в
+# # файловой системе
+# import time
+#
+# patn = "main.py"
+# print(os.path.getsize(patn) / 1024)
+# print(os.path.getctime(patn))
+# print(os.path.getatime(patn))
+# print(os.path.getmtime(patn))
+#
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(os.path.getctime(patn))))
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(os.path.getmtime(patn))))
+
+# print(os.path.isdir(r"D:\Python318\318\nested1\nested2\nested3"))
+# print(os.path.isfile(r"D:\Python318\318\nested1\nested2\nested3\text.txt"))
+
+class Point:
+    """Класс для представления координат точек на плоскости"""
+    x = 1
+    y = 1
+
+p1 = Point()
+p1.x = 5
+p1.y = 10
+p1.z = 30
+print(p1.x)
+print(p1.y)
+print(p1.__dict__)
+
+p2 = Point()
+print(p2.x)
+print(p2.y)
+print(p2.__dict__)
+
+print(id(Point))
+print(id(p1))
+print(id(p2))
+
+print(Point.__dict__)
+print(Point.__doc__)
 
 
-print(remove(" Hello\nWorld "))
+
