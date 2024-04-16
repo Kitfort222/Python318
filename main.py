@@ -2725,42 +2725,42 @@ import os
 # p2.set_coord(3, 7)
 
 
-# class Human:
-#     name = "name"
-#     birthday = "00.00.0000"
-#     phone = "00-00-00"
-#     country = "country"
-#     city = "city"
-#     address = "street, house"
-#     def print_info(self):
-#         print(" Персональные данные ".center(40, "*"))
-#         print(f"Имя: {self.name}\nДата рождения: {self.birthday}\nНомер телефона: {self.phone}\n"
-#               f"Страна: {self.country}\nГород: {self.city}\nДомашний адрес: {self.address}")
-#         print("=" * 40)
-#     def input_info(self, first_name, birthday, phone, country, city, address):
-#         self.birthday = birthday
-#         self.phone = phone
-#         self.address = address
-#         self.country = country
-#         self.city = city
-#         self.name = first_name
-#     def set_name(self, name):  # устанавливаем новое имя
-#         self.name = name
-#     def get_name(self):  # получаем имя
-#         return self.name
-#     def set_birthday(self, value):
-#         self.birthday = value
-#     def get_birthday(self):
-#         return self.birthday
-#
-# h1 = Human()
-# h1.print_info()
-# h1.input_info("Юля", "23.05.1986", "45-46-98", "Россия", "Москва", "Чистопрудный бульвар, 1А")
-# h1.print_info()
-# h1.set_name("Юлия")
-# print(h1.get_name())
-# h1.set_birthday("02.05.1980")
-# print(h1.get_birthday())
+class Human:
+    name = "name"
+    birthday = "00.00.0000"
+    phone = "00-00-00"
+    country = "country"
+    city = "city"
+    address = "street, house"
+    def print_info(self):
+        print(" Персональные данные ".center(40, "*"))
+        print(f"Имя: {self.name}\nДата рождения: {self.birthday}\nНомер телефона: {self.phone}\n"
+              f"Страна: {self.country}\nГород: {self.city}\nДомашний адрес: {self.address}")
+        print("=" * 40)
+    def input_info(self, first_name, birthday, phone, country, city, address):
+        self.birthday = birthday
+        self.phone = phone
+        self.address = address
+        self.country = country
+        self.city = city
+        self.name = first_name
+    def set_name(self, name):  # устанавливаем новое имя
+        self.name = name
+    def get_name(self):  # получаем имя
+        return self.name
+    def set_birthday(self, value):
+        self.birthday = value
+    def get_birthday(self):
+        return self.birthday
+
+h1 = Human()
+h1.print_info()
+h1.input_info("Юля", "23.05.1986", "45-46-98", "Россия", "Москва", "Чистопрудный бульвар, 1А")
+h1.print_info()
+h1.set_name("Юлия")
+print(h1.get_name())
+h1.set_birthday("02.05.1980")
+print(h1.get_birthday())
 
 
 # class Person:
