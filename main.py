@@ -2593,7 +2593,6 @@ import re
 
 import os
 
-
 # import os.path
 
 # print(os.path.split(r"C:\Users\Admin\Desktop\JS\318\nested1\nested2\text.txt"))
@@ -2724,43 +2723,43 @@ import os
 # # p2.y = 7
 # p2.set_coord(3, 7)
 
-
-class Human:
-    name = "name"
-    birthday = "00.00.0000"
-    phone = "00-00-00"
-    country = "country"
-    city = "city"
-    address = "street, house"
-    def print_info(self):
-        print(" Персональные данные ".center(40, "*"))
-        print(f"Имя: {self.name}\nДата рождения: {self.birthday}\nНомер телефона: {self.phone}\n"
-              f"Страна: {self.country}\nГород: {self.city}\nДомашний адрес: {self.address}")
-        print("=" * 40)
-    def input_info(self, first_name, birthday, phone, country, city, address):
-        self.birthday = birthday
-        self.phone = phone
-        self.address = address
-        self.country = country
-        self.city = city
-        self.name = first_name
-    def set_name(self, name):  # устанавливаем новое имя
-        self.name = name
-    def get_name(self):  # получаем имя
-        return self.name
-    def set_birthday(self, value):
-        self.birthday = value
-    def get_birthday(self):
-        return self.birthday
-
-h1 = Human()
-h1.print_info()
-h1.input_info("Юля", "23.05.1986", "45-46-98", "Россия", "Москва", "Чистопрудный бульвар, 1А")
-h1.print_info()
-h1.set_name("Юлия")
-print(h1.get_name())
-h1.set_birthday("02.05.1980")
-print(h1.get_birthday())
+#
+# class Human:
+#     name = "name"
+#     birthday = "00.00.0000"
+#     phone = "00-00-00"
+#     country = "country"
+#     city = "city"
+#     address = "street, house"
+#     def print_info(self):
+#         print(" Персональные данные ".center(40, "*"))
+#         print(f"Имя: {self.name}\nДата рождения: {self.birthday}\nНомер телефона: {self.phone}\n"
+#               f"Страна: {self.country}\nГород: {self.city}\nДомашний адрес: {self.address}")
+#         print("=" * 40)
+#     def input_info(self, first_name, birthday, phone, country, city, address):
+#         self.birthday = birthday
+#         self.phone = phone
+#         self.address = address
+#         self.country = country
+#         self.city = city
+#         self.name = first_name
+#     def set_name(self, name):  # устанавливаем новое имя
+#         self.name = name
+#     def get_name(self):  # получаем имя
+#         return self.name
+#     def set_birthday(self, value):
+#         self.birthday = value
+#     def get_birthday(self):
+#         return self.birthday
+#
+# h1 = Human()
+# h1.print_info()
+# h1.input_info("Юля", "23.05.1986", "45-46-98", "Россия", "Москва", "Чистопрудный бульвар, 1А")
+# h1.print_info()
+# h1.set_name("Юлия")
+# print(h1.get_name())
+# h1.set_birthday("02.05.1980")
+# print(h1.get_birthday())
 
 
 # class Person:
@@ -3279,21 +3278,163 @@ print(h1.get_birthday())
 # acc.convert_to_usd()
 # acc.convert_to_eur()
 # print()
-
-class UserData:
-    def __init__(self, fio, old, ps, weight):
-        self.__fio = fio
-        self.__old = old
-        self.__password = ps
-        self.__weight = weight
-
-    @staticmethod
-    def verify_fio(fio):
-        if not isinstance(fio, str):
-            raise TypeError("ФИО должны быть строкой")
-        f = fio.split()
-        if len(f) != 3:
-            raise TypeError("Неверный формат ФИО")
+import re
 
 
-p1 = UserData("Волков Игорь Николаевич",  26, "1234 657789", 80.8)
+# class UserData:
+#     def __init__(self, fio, old, ps, weight):
+#
+#         self.fio = fio
+#         self.old = old
+#         self.password = ps
+#         self.weight = weight
+#
+#     @staticmethod
+#     def verify_fio(fio):
+#         if not isinstance(fio, str):
+#             raise TypeError("ФИО должны быть строкой")
+#         f = fio.split()
+#
+#         if len(f) != 3:
+#             raise TypeError("Неверный формат ФИО")
+#         # ['В', 'о', 'л', 'к', 'о', 'в', 'И', 'г', 'о', 'р', 'ь', 'Н', 'и', 'к', 'о', 'л', 'а', 'е', 'в', 'и', 'ч']
+#         letters = "".join(re.findall("[a-zа-яё-]", fio, re.IGNORECASE))  # Волков-ПетровИгорьНиколаевич
+#         # print(letters)
+#         for s in f:
+#             if len(s.strip(letters)) != 0:
+#                 raise TypeError("В ФИО можно использовать только буквы и дефис")
+#
+#     @staticmethod
+#     def verify_old(old):
+#         if not isinstance(old, int) or old < 14 or old > 120:
+#             raise TypeError("Возраст должен быть числом в диапозоне от 14 до 120 лет")
+#
+#     @staticmethod
+#     def verify_weight(w):
+#         if not isinstance(w, float):
+#             raise TypeError("Вес должен быть вещественным числом от 20 кг и выше")
+#     @staticmethod
+#     def verify_ps(ps):
+#         if not isinstance(ps, str):
+#             raise TypeError("Паспорт должен быть строкой")
+#         s = ps.split()
+#         if len(s) != 2 or len(s[0]) != 4 or len(s[1]) != 6:
+#             raise TypeError("Неверный формат паспорта")
+#         for p in s:
+#             if not p.isdigit():
+#                 raise TypeError("Серия и номер паспорта должны быть числа")
+#
+#     @property
+#     def fio(self):
+#         return self.__fio
+#
+#     @fio.setter
+#     def fio(self, fio):
+#         self.verify_fio(fio)
+#         self.__fio = fio
+#
+#     @property
+#     def old(self):
+#         return self.__old
+#
+#
+#     @old.setter
+#     def old(self, year):
+#         self.verify_old(year)
+#         self.__old = year
+#
+#
+#     @property
+#     def password(self):
+#         return self.__password
+#
+#     @password.setter
+#     def password(self, ps):
+#         self.verify_ps(ps)
+#         self.__password = ps
+#
+#     @property
+#     def weight(self):
+#         return self.__weight
+#
+#     @weight.setter
+#     def weight(self, w):
+#         self.verify_weight(w)
+#         self.__weight = w
+#
+# p1 = UserData("Волков-Петров Игорь Николаевич", 26, "1234 567890", 80.5)
+# p1.fio = "Соболев Виктор Николаевич"
+# print(p1.fio)
+# p1.old = 30
+# print(p1.__dict__)
+
+# Наследование
+
+# class Point(object):
+#     def __init__(self):
+#         self.__x = x
+#         self.__y = y
+#
+# print(issubclass(Point, object))
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str ="red", width: int = 1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+# class Line(Prop):
+#     def __init__(self, *args):
+#         print("Переопределенный инициализатор Line")
+#         # Prop.__init__(self, *args)
+#         super().__init__(*args)
+#     def draw_line(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color} {self._width}")
+#
+# class Rect(Prop):
+#     def draw_rect(self):
+#         print(f"Рисование прямоугольника: {self._sp}, {self._ep}, {self._color} {self._width}")
+#
+#
+# Line = Line(Point(1, 2), Point(10, 20))
+# Line.draw_line()
+# rect = Rect(Point(30, 40), Point(70, 80))
+# rect.draw_rect()
+#
+# print(Line._sp)
+
+class Figure:
+    def __init__(self, color):
+        self.__color = color
+
+    @property
+    def color(self):
+        return self.__color
+
+    @color.setter
+    def color(self, c):
+        self.__color = c
+
+
+class Rectangle(Figure):
+    def __init__(self, width, height, color):
+        super().__init__(color)
+        self.__width = width
+        self.__height = height
+
+    def area(self):
+        print(f"Прямоугольник {self.color}. Площадь: ", end="")
+        return self.__width * self.__height
+
+
+rect = Rectangle(10, 20, "green")
+print(rect.area())
+
