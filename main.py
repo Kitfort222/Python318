@@ -3424,17 +3424,289 @@ class Figure:
         self.__color = c
 
 
-class Rectangle(Figure):
-    def __init__(self, width, height, color):
-        super().__init__(color)
-        self.__width = width
-        self.__height = height
+# class Rectangle(Figure):
+#     def __init__(self, width, height, color):
+#         super().__init__(color)
+#         self.__width = width
+#         self.__height = height
+#
+#     def area(self):
+#         print(f"Прямоугольник {self.color}. Площадь: ", end="")
+#         return self.__width * self.__height
+#
+#
+# rect = Rectangle(10, 20, "green")
+# print(rect.area())
 
-    def area(self):
-        print(f"Прямоугольник {self.color}. Площадь: ", end="")
-        return self.__width * self.__height
+
+# Наследование от встроенных типов
+# class Vector(list):
+#     def __str__(self):
+#         return " ". join(map(str, self))
+#
+#
+# v = Vector([1, 2, 3])
+# v.append(4)
+# print(v)
+# print(type(v))
+
+# Перегрузка методов
+
+# class Point:
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#     def __str__(self):
+#         return f"x = {self.x}, y = {self.y}"
+#
+#     def set_coord(self, x=None, y=None):
+#         if y is None:
+#             self.x = x
+#         elif x is None:
+#             self.y = y
+#         else:
+#             self.x = x
+#             self.y = y
+#
+#
+# p1 = Point(10, 20)
+# print(p1)
+# p1.set_coord(1, 3)
+# print(p1)
+# p1.set_coord(5)
+# print(p1)
+# p1.set_coord(y=30)
+# print(p1)
+
+# Абстрактные методы
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1) -> None:
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def draw(self):
+#         raise NotImplemented("В дочернем классе должен быть определен метод draw()")
+#
+#
+# class Line(Prop):
+#     def draw(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color} {self._width}")
+#
+# class Rect(Prop):
+#     def draw(self):
+#         print(f"Рисование прямоугольника: {self._sp}, {self._ep}, {self._color} {self._width}")
+#
+# class Ellipse(Prop):
+#     def draw_line(self):
+#         print(f"Рисование эллипса: {self._sp}, {self._ep}, {self._color} {self._width}")
+#
+#
+# figs = list()
+# figs.append(Line(Point(0, 0), Point(10, 10)))
+# figs.append(Line(Point(10, 10), Point(20, 10)))
+# figs.append(Rect(Point(50, 50), Point(100, 100)))
+# figs.append(Ellipse(Point(-10, -10), Point(10, 10)))
+#
+# for f in figs:
+#     f.draw()
+
+# from math import pi
+#
+#
+# class Table:
+#     def __init__(self, width=None, length=None, radius=None):
+#         if radius is None:
+#             if length is None:
+#                 self.width = self.length = width
+#             else:
+#                 self.width = width
+#                 self.length = length
+#         else:
+#             self.radius = radius
+#
+#     def calc_area(self):
+#         raise NotImplementedError("В дочернем классе должен быть реализован метод calc_area()")
+#
+#
+# class SqTable(Table):
+#     def calc_area(self):
+#         return self.width * self.length
+#
+#
+# class RoundTable(Table):
+#     def calc_area(self):
+#         return round(pi * self.radius ** 2, 2)
+#
+#
+# t = SqTable(20, 10)
+# print(t.__dict__)
+# print(t.calc_area())
+# t1 = SqTable(20)
+# print(t1.__dict__)
+# print(t1.calc_area())
+# t2 = RoundTable(radius=20)
+# print(t2.__dict__)
+# print(t2.calc_area())
+
+# Абстрактные классы - это класс, который содержит хотя бы один абстрактный метод
+
+# from abc import ABC, abstractmethod
+#
+#
+# class Chess(ABC):  # абстрактный класс
+#     def draw(self):
+#         print("Нарисовал шахматную фигуру")
+#
+#     @abstractmethod  # абстрактный метод
+#     def move(self):
+#         print("Метод move() в базовом классе")
+#
+# class Qween(Chess):
+#     def move(self):
+#         super().move()
+#         print("Ферзь перемещен на е2е4")
+#
+# q = Qween()
+# q.draw()
+# q.move()
+
+# q = Chess() # экземпляр абстрактного класса создать нельзя
+
+# from abc import ABC, abstractmethod
+#
+# class Currency(ABC):
+#     suffix = "RUB"
+#     def __init__(self, value):
+#         self.value = value
+#     @abstractmethod
+#     def convert_to_rub(self):
+#         pass
+#     def print_value(self):
+#         print(self.value, end=" ")
+#
+#     def draw(self):
+#         print(f"= {self.convert_to_rub():.2f} RUB")
+#
+# class Dollar(Currency):
+#     rate_to_rub = 74.16
+#     suffix = 'USD'
+#     def convert_to_rub(self):
+#         return self.value * Dollar.rate_to_rub
+#     def print_value(self):
+#         super().print_value()
+#         print(Dollar.suffix, end=" ")
+#
+# class Euro(Currency):
+#     rate_to_rub = 90.14
+#     suffix = 'EUR'
+#     def convert_to_rub(self):
+#         return self.value * Euro.rate_to_rub
+#     def print_value(self):
+#         super().print_value()
+#         print(Euro.suffix, end=" ")
+#
+# d = [Dollar(5), Dollar(10), Dollar(50), Dollar(100)]
+# e = [Euro(5), Euro(10), Euro(50), Euro(100)]
+# print('*' * 30)
+# for elem in d:
+#     elem.print_value()
+#     elem.draw()
+#
+# print('*' * 30)
+# for elem in e:
+#     elem.print_value()
+#     elem.draw()
+
+# Интерфейс
+
+# from abc import ABC, abstractmethod
+#
+# class Father(ABC):
+#     @abstractmethod
+#     def display1(self):
+#         pass
+#
+#     @abstractmethod
+#     def display2(self):
+#         pass
+#
+# class Child(Father):
+#     def display1(self):
+#         print("Display_1")
+# class GrandChild(Child):
+#     def display2(self):
+#         print("Display_2")
+#
+#
+# gc = GrandChild()
+# gc.display2()
+# gc.display1()
+
+# Вложенные классы
+
+# def outer():
+#     x = 5
+#
+#     def inner():
+#         y = 10
+#         print(x)
+#
+#     inner()
+#     print(y)
+#
+# outer()
 
 
-rect = Rectangle(10, 20, "green")
-print(rect.area())
+# class MyOuter:
+#     age = 18
+#     def __init__(self, name):
+#         self.name = name
+#     @staticmethod
+#     def outer_method():
+#         print("outer_method")
+#     def instance_method(self):
+#         print("instance_method")
+#     class MyInner:
+#         def __init__(self, inner_name, obj):
+#             self.inner_name = inner_name
+#             self.obj = obj
+#         def inner_method(self):
+#             print("Метод во сложенном классе", MyOuter.age, self.obj.name)
+#             MyOuter.outer_method()
+#             self.obj.instance_method()
+#
+# out = MyOuter("внешний")
+# inner = out.MyInner("внутренний", out)
+# # inner = MyOuter.MyInner("внутренний")
+# print(inner.inner_name)
+# inner.inner_method()
 
+
+class Color:
+    def __init__(self):
+        self.name = "Green"
+        self.lg = self.LightGreen()
+    def show(self):
+        print("Name:", self.name)
+    class LightGreen:
+        def __init__(self):
+            self.name = "Light Green"
+        def display(self):
+            print("Name:", self.name)
+
+outer = Color()
+outer.show()
+g = outer.lg
+g.display()
