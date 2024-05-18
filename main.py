@@ -4686,41 +4686,177 @@ import re
 # print(b)
 # print(json.loads(a))
 
+
+# import json
+# from random import choice
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'e', 'f', 'g']
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#     while len(name) != 7:
+#         name += choice(letters)
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#     person = {
+#         'name': name,
+#         'tel': tel
+#     }
+#     return person, tel
+#
+# def write_json(person_dict, num):
+#     try:
+#         data = json.load(open('persons1.json'))
+#     except FileNotFoundError:
+#         data = {}
+#     data[num] = person_dict
+#     with open('persons1.json', 'w') as f:
+#         json.dump(data, f, indent=2)
+#
+# for i in range(5):
+#     write_json(gen_person()[0], gen_person()[1])
+
+
+
+# import json
+# class Student:
+#     def __init__(self, name, marks):
+#         self.name = name
+#         self.marks = marks
+#
+#     def __str__(self):
+#         # st = ''
+#         # for i in self.marks:
+#         #     st += str(i) + ', '
+#         # return f"{self.name}: {st[:-2]}"
+#         st = ", ".join(map(str, self.marks))
+#         return f"{self.name}: {st}"
+#
+#     def add_mark(self, new_mark):
+#         self.marks.append(new_mark)
+#
+#     def delete_mark(self, index):
+#         self.marks.pop(index)
+#
+#     def edit_mark(self, index, new_mark):
+#         self.marks[index] = new_mark
+#
+#     def average_mark(self):
+#         return sum(self.marks) / len(self.marks)
+#
+#
+#
+#     def dump_to_json(self, file_name):
+#         data = {"name": self.name, "marks": self.marks}
+#         with open(file_name, "w") as f:
+#             json.dump(data, f, indent=2)
+#
+#     def load_from_file(self, file_name):
+#         with open(file_name, 'r') as f:
+#             print(json.load(f))
+#
+# class Group:
+#     def __init__(self, students, group):
+#         self.students = students
+#         self.group = group
+#
+#     def __str__(self):
+#         #     st = ''
+#         #     for i in self.students:
+#         #         st += str(i) + '\n'
+#         st = "\n".join(map(str, self.students))
+#         return f"Группа: {self.group}\n{st}"
+#
+#     @staticmethod
+#     def change_group(gr1, gr2, index):
+#         return gr2.add_student(gr1.remove_student(index))
+#
+#     def add_student(self, student):
+#         self.students.append(student)
+#
+#     def remove_student(self, index):
+#         return self.students.pop(index)
+#
+#
+#
+#
+# st1 = Student('Bodnya', [5, 4, 3, 4, 5, 3])
+# # print(st1)
+# # st1.add_mark(4)
+# # print(st1)
+# # st1.delete_mark(2)
+# # print(st1)
+# # st1.edit_mark(4, 5)
+# # print(st1)
+# # print(st1.average_mark())
+# st2 = Student('Nikolaenko', [2, 3, 5, 4, 4, 2])
+# st3 = Student('Birukov', [3, 5, 3, 2, 5, 4])
+# sts1 = [st1, st2]
+# group1 = Group(sts1, "ГК Python")
+# group1.add_student(st3)
+# print(group1)
+# print()
+# group1.remove_student(1)
+# print(group1)
+# print()
+# sts2 = [st2]
+# group2 = Group(sts2, "ГК WEB")
+# print(group2)
+# print("." * 20)
+# Group.change_group(group1, group2, 0)
+# print(group1)
+# print()
+# print(group2)
+# file = "student.json"
+# st1.dump_to_json(file)
+# st1.load_from_file(file)
+
 import json
-from random import choice
+
+data = {}
 
 
-def gen_person():
-    name = ''
-    tel = ''
+class CountryCapital:
+    def __init__(self, country, capital):
+        self.country = country
+        self.capital = capital
+        data[self.country] = self.capital
 
-    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
-    nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    def __str__(self):
+        return f"{self.country}: {self.capital}"
 
-    while len(name) != 7:
-        name += choice(letters)
-    # print(name)
+    @staticmethod
+    def add_country(filename):
+        country_name = input("Vvedite stranu: ")
+        capital_name = input("Vvedite stolicy: ")
 
-    while len(tel) != 10:
-        tel += choice(nums)
-    # print(tel)
+        try:
+            date = json.load(open(filename))
+        except FileNotFoundError:
+            date = {}
 
-    person = {
-        'name': name,
-        "tel": tel
-    }
-    return person
+        date[country_name] = capital_name
 
-def write_json(person_dict):
-    try:
-        data = json.load(open('persons.json'))
-    except FileNotFoundError:
-        data = []
+        with open(filename, "w") as f:
+            json.dump(date, f, indent=2)
 
-    data.append(person_dict)
-    with open('persons.json', 'w') as f:
-        json.dump(data, f, indent=2)
+    @staticmethod
+    def load_from_file(filename):
+        with open(filename, "r") as f:
+            print(json.load(f))
 
 
-for i in range(5):
-    write_json(gen_person())
+file = 'list_capital.json'
+index = ''
+while index != '6':
+    index = input("Deistrie:\n1 - dobavlenie dannih\n2 - udalenie dannih\n"
+                  "5 - prosmotr dannih\n6 - zavershenie raboty\nVvod: ")
+    if index == "1":
+        CountryCapital.add_country(file)
+    if index == "5":
+        CountryCapital.load_from_file(file)
+
+
+
+
