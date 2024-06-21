@@ -1,0 +1,88 @@
+1.	Сосчитать количество клиентов, покупающих товар.
+SELECT COUNT(Client)
+FROM Client
+
+2.	Сколько посредников поставляют товар для фирмы.
+SELECT COUNT(Seller), Status
+FROM Seller
+WHERE Status = "посредник"
+
+3.	Вывести среднюю сумму сделки по проданному товару.
+SELECT ROUND(AVG(CostUnit * Count)) AS "Средняя сумма сделки"
+FROM ClientGoods
+
+4.	Посчитать на какую сумму было всего поставлено товара.
+SELECT ROUND(SUM(CostUnit * Count)) AS "Сумма всего товара"
+FROM ClientGoods
+
+5.	Определите максимальное количество закупленного товара шт.(кг)
+SELECT MAX(Count)
+FROM ClientGoods
+
+6.	Какая минимальная сумма покупки, на которую клиент сделал заказ.
+SELECT MIN(cg.CostUnit * cg.Count), c.Client
+FROM Client c, ClientGoods cg
+WHERE c.INNClient=cg.INNClient
+
+7.	Посчитать на какую сумму было продано товара магазинам.
+SELECT SUM(cg.CostUnit * cg.Count), c.Status
+FROM Client c, ClientGoods cg
+WHERE c.INNClient=cg.INNClient AND c.Status = “магазин”
+
+8.	Сосчитать общее количество видов закупленных фирмой вафель.
+SELECT COUNT(sg.Goods), s.Seller
+FROM  SallerGoods 
+WHERE s.INNSeller=sg.INNSeller AND Goods = "Вафли"
+
+9.	Выведите среднюю цену на растительное масло (закупочную).
+SELECT AVG(sg.CostUnit), Goods
+FROM  SallerGoods sg, Seller s 
+WHERE s.INNSeller=sg.INNSeller AND sg.Goods = "Масло %"
+
+10.	Определите сколько всего было продано килограмм яблок.
+SELECT COUNT(sg.Goods), s. Seller, c.Client, sg.Goods
+FROM  Seller s, Client c, ClientGoods cg, SallerGoods sg
+WHERE (s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient) AND sg.Goods="Яблоки%"
+
+11.	Определите какое количество картофеля закупили кафе.
+SELECT COUNT(sg.Goods), s. Seller, c.Client, sg.Goods, c.Status
+FROM  Seller s, Client c, ClientGoods cg, SallerGoods sg
+WHERE (s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient) AND sg.Goods="Картофель %" AND c.Status = "кафе"
+
+12.	Посчитать сколько клиентов купили перец черный молотый.
+SELECT COUNT(c.INNClient), c.Client, sg.Goods
+FROM  Seller s, Client c, ClientGoods cg, SallerGoods sg
+WHERE (s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient) AND sg.Goods="Перец черный молотый"
+
+13.	Определить сколько наименований товара было куплено у посредников.
+SELECT COUNT (cg.ID)
+FROM Seller s, Client c, ClientGoods cg, SallerGoods sg
+WHERE (s.INNSeller=sg.INNSeller AND sg.ID=cg.ID AND c.INNClient=cg.INNClient) AND s.Status="посредник"
+
+
+14.	Определить минимальную цену за единицу проданного товара.
+
+15.	Определите минимальную сумму на какую было закуплено товара.
+
+16.	Определить максимальную сумму за товар, проданный магазинам.
+
+17.	Определить со сколькими фирмами сотрудничает данная фирма.
+
+18.	Определить минимальную сумму сделки по закупке товара у производителей.
+
+19.	Определить среднюю цену за пачку чая при покупке.
+
+20.	Определите максимальную сумму прибыли за товар, проданный посреднику.
+
+21.	 Определите минимальную прибыль за товар, купленный у посредника.
+
+22.	 Какое количество наименований товара куплено у фирмы.
+
+23.	 Сколько в продаже видов печенья.
+
+24.	 Какая максимальная сумма покупки, на которую клиент сделал заказ.
+
+25.	 Определите среднюю прибыль от перепродажи масла.
+
+26.	 Со сколькими посредниками сотрудничает фирма.
+
