@@ -5501,18 +5501,121 @@ import sqlite3
 #     with open("sql_dump.sql", "r") as f:
 #         sql = f.read()
 #         cur.executescript(sql)
+#
+# # ORM (Object-Relation Mapping) - реляционное сопоставление объектов
+# # SQLAlchemy ORM
+#
+# import os
+#
+# from models.database import DATABASE_NAME
+# import create_database as db_creator
+#
+#
+# if __name__ == '__main__':
+#     db_is_created = os.path.exists(DATABASE_NAME)
+#     if not db_is_created:
+#         db_creator.create_database()
 
-# ORM (Object-Relation Mapping) - реляционное сопоставление объектов
-# SQLAlchemy ORM
-
-import os
-
-from models.database import DATABASE_NAME
-import create_database as db_creator
-
-if __name__ == '__main__':
-    db_is_created = os.path.exists(DATABASE_NAME)
-    if not db_is_created:
-        db_creator.create_database()
+# Шаблонизатор (Jinja)
 
 
+# from jinja2 import Template
+
+# name = "Игорь"
+# age = 25
+# per = {'name': 'Игорь', 'age': 25}
+#
+# tm = Template("Мне {{p['age']}} лет. Меня зовут {{ p.name }}.")
+# msg = tm.render(p=per)
+#
+# print(msg)
+
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#
+#     def get_name(self):
+#         return self.name
+#
+#
+# per = Person("Игорь", 25)
+#
+# tm = Template("Мне {{ p['age'] }} лет. Меня зовут {{ p.get_name() }}.")
+# msg = tm.render(p=per)
+#
+# print(msg)
+
+# cities = [
+#     {'id': 1, 'city': 'Москва'},
+#     {'id': 2, 'city': 'Сочи'},
+#     {'id': 3, 'city': 'Минск'},
+#     {'id': 4, 'city': 'Ярославль'},
+#     {'id': 5, 'city': 'Смоленск'},
+# ]
+#
+# link = """<select name="cities">
+#     {% for c in cities -%}
+#         {% if c.id > 3 -%}
+#             <option value="{{ c['id'] }}">{{ c['city'] }}</option>
+#         {% elif c.city == "Москва" %}
+#             <option>{{ c['city'] }}</option>
+#         {% else -%}
+#             {{ c['city'] }}
+#         {% endif -%}
+#     {% endfor -%}
+# </select>"""
+
+# tm = Template(link)
+# msg = tm.render(cities=cities)
+#
+# print(msg)
+# cars = [
+#     {'model': 'Audi', 'price': 23000},
+#     {'model': 'Skoda', 'price': 17300},
+#     {'model': 'Renault', 'price': 44300},
+#     {'model': 'Wolksvagen', 'price': 21300}
+# ]
+
+# tpl = "Сумма: {{ cs | sum(attribute='price') }}"
+# tpl = "{{ cs | max(attribute='price') }}"
+# tpl = "min{{ cs | sum(attribute='price') }}"
+# tpl = "{{ cs | random) }}"
+# tpl = "{{ cs | replace('model', 'brand') }}"
+
+# tm = Template(tpl)
+# msg = tm.render(cs=cars)
+#
+# print(msg)
+
+# html = """
+# {% macro input_func(name, value, type="text", size=40) %}
+#     <input type="{{ type }}" name="{{ name }}" value="{{ value }}" size="">
+# {% endmacro %}
+#
+# <p>{{ input_func('name', 'Введите имя') }}</p>
+# <p>{{ input_func('psw', 'Пароль', 'password') }}</p>
+# <p>{{ input_func('email', 'Электронная почта', 'email') }}</p>
+# """
+
+# tm = Template(html)
+# msg = tm.render()
+#
+# print(msg)
+
+from jinja2 import Environment, FileSystemLoader
+
+persons = [
+    {"name": "Алексей", "year": 18, "weight": 78.5},
+    {"name": "Никита", "year": 28, "weight": 82.3},
+    {"name": "Виталий", "year": 33, "weight": 94.0}
+]
+
+
+file_loader = FileSystemLoader('templates')
+env = Environment(loader=file_loader)
+
+tm = env.get_template('about.html')
+msg = tm.render(users=persons, title='About Jinja')
+
+print(msg)

@@ -5,6 +5,7 @@ from models.lesson import Lesson
 from models.student import Student
 from models.group import Group
 
+
 def create_database(load_fake_data=True):
     create_db()
     if load_fake_data:
@@ -15,21 +16,21 @@ def _load_fake_data(session):
     lessons_name = ['Математика', 'Программирование', 'Философия', 'Алгоритмы и структуры данных',
                     'Линейная алгебра', 'Статистика', 'Физика']
 
-    group1 = Group(group_name='MDA-7')
-    group2 = Group(group_name='NDA-9')
+    group1 = Group(group_name="MDA-7")
+    group2 = Group(group_name="MDA-9")
     session.add(group1)
     session.add(group2)
 
     for key, it in enumerate(lessons_name):
-        lesson = Lesson(lessons_title=it)
-        Lesson.groups.append(group1)
+        lesson = Lesson(lesson_title=it)
+        lesson.groups.append(group1)
         if key % 2 == 0:
             lesson.groups.append(group2)
-            session.add(lesson)
+        session.add(lesson)
 
     session.commit()
 
-    faker = Faker("ru-RU")
+    faker = Faker("ru_RU")
     group_list = [group1, group2]
 
     for _ in range(50):
