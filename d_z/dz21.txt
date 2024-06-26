@@ -34,4 +34,3 @@ with sqlite3.connect("prod.db") as con:
     # for res in cur:
     #     print(res['model'], res['price'])
     cur.execute("INSERT INTO users VALUES('Сергей', 9097776655, 'улица Советская')")
-
