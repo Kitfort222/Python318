@@ -5638,7 +5638,7 @@ with sqlite3.connect("prod.db") as con:
      CREATE TABLE IF NOT EXISTS users(
         name TEXT, 
         phone BLOB NOT NULL DEFAULT "+79090000000",
-        email TEXT UNIQUE
+        address TEXT
     )
    """)
     # cur.execute("INSERT INTO prods VALUES(1, 'HUAWEI', 23000)")
@@ -5655,6 +5655,6 @@ with sqlite3.connect("prod.db") as con:
     #
     # for res in cur:
     #     print(res['model'], res['price'])
-    cur.execute("INSERT INTO users VALUES('Сергей', 9097776655, 'serg@mail.ru')")
+    cur.execute("INSERT INTO users VALUES('Сергей', 9097776655, 'улица Советская')")
 
 

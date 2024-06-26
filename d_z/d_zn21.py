@@ -1,0 +1,37 @@
+import sqlite3
+
+with sqlite3.connect("prod.db") as con:
+    con.row_factory = sqlite3.Row
+    cur = con.cursor()
+    cur.executescript("""
+    CREATE TABLE IF NOT EXISTS prods(
+        prod_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        model TEXT,
+        price INTEGER
+    );
+    CREATE TABLE IF NOT EXISTS cost(
+        name TEXT, tr_in INTEGER, buy INTEGER
+     );
+
+     CREATE TABLE IF NOT EXISTS users(
+        name TEXT, 
+        phone BLOB NOT NULL DEFAULT "+79090000000",
+        address TEXT
+    )
+   """)
+    # cur.execute("INSERT INTO prods VALUES(1, 'HUAWEI', 23000)")
+    # cur.execute("INSERT INTO prods VALUES(2, 'Apple', 40000)")
+    # cur.execute("INSERT INTO prods VALUES(3, 'HONOR', 35000)")
+    # cur.execute("INSERT INTO prods VALUES(4, 'Infinix', 40000)")
+    # cur.execute("INSERT INTO prods VALUES(5, 'Samsung', 123000)")
+    # cur.execute("INSERT INTO prods VALUES(NULL, 'Tecno', 10000)")
+    # last_row_id = cur.lastrowid
+    # buy_prod_id = 4
+    # cur.execute("INSERT INTO cost VALUES('Сергей', ?, ?)", (last_row_id, buy_prod_id))
+
+    # cur.execute("SELECT model, price FROM prods")
+    #
+    # for res in cur:
+    #     print(res['model'], res['price'])
+    cur.execute("INSERT INTO users VALUES('Сергей', 9097776655, 'улица Советская')")
+
