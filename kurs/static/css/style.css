@@ -9,7 +9,7 @@ body{
     display: flex;
     justify-content: space-around;
     list-style: none;
-    background:blue;
+    background: blue;
     padding: 20px;
     margin-top: 0;
 }
@@ -27,7 +27,7 @@ body{
  
 .flash.success{
     border: 1px solid #21DB56;
-    background: #AEFFC5;
+    background: blue;
 }
 
 .flash.error{
@@ -37,7 +37,7 @@ body{
 
 .menu a{
     font-weight: bold;
-    color: brown;
+    color: blue;
 }
 
 
@@ -48,7 +48,7 @@ ul{
 
 .title a{
     text-decoration: none;
-    color: brown;
+    color: blue;
 }
 
 .title, .annonce{
@@ -59,7 +59,7 @@ ul{
 .title{
     margin: 0;
     font-weight: bold;
-    background: gold;
+    background: blue;
 }
 
 .title a{
@@ -67,7 +67,7 @@ ul{
 }
 
 .title:hover{
-    background: orange;
+    background: blue;
 }
 
 .annonce{
